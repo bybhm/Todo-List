@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="./css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/_48cd7cb1-71d2-454c-a5a0-715b4cb45816.jpg"
+      type="image/x-icon" />
+  </head>
+  <body>
+    <div class="global">
+      <header>
+        <div class="cover">
+          <h2
+            class="covertitle"
+            onclick="clearlocal()">
+            ToDoList
+          </h2>
+        </div>
+        <div class="inputcontaier">
+          <div class="input">
+            <input
+              autofocus
+              type="text"
+              placeholder="Enter your todo!"
+              id="todoinput"
+              name="todoinput" />
+            <button onclick="todoadder()">
+              <h2>+</h2>
+            </button>
+            <button
+              class="scndbtn"
+              onclick="todosorter()">
+              <h4>
+                <i class="fas fa-sort-alpha-down"></i>
+              </h4>
+            </button>
+          </div>
+        </div>
+      </header>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
+
+<!-- todo add icon fonts and sorting  -->

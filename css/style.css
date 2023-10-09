@@ -1,0 +1,208 @@
+.global {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(270deg,
+      rgba(0, 219, 222, 0.5) 0%,
+      rgba(252, 0, 255, 0.6) 100%);
+}
+
+header {
+  position: relative;
+}
+
+.cover {
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: url('../assets/ken-cheung-KonWFWUaAuk-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.covertitle {
+  text-shadow: 0px 2.5px 15px #fff;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 40px;
+  margin-left: 4rem;
+  align-self: center;
+}
+
+.covertitle:hover {
+  text-shadow: 0px 2.5px 7.5px white;
+}
+
+.covertitle:active {
+  text-shadow: 0px 2.5px 5px white;
+}
+
+.inputcontaier {
+  position: relative;
+  top: -40px;
+  z-index: 1;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+.inputcontaier .input {
+  display: flex;
+  justify-content: center;
+}
+
+.inputcontaier .input input {
+  padding: 5px 10px;
+  width: 35rem;
+  border-color: rgba(105, 105, 105, 0.14);
+  border-width: 20px;
+  border-style: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 20px;
+}
+
+.inputcontaier .input input::-webkit-input-placeholder {
+  color: gray;
+  font-weight: 600;
+  align-items: center;
+}
+
+.inputcontaier .input button {
+  padding: 0 25px;
+  background-color: #ecf1fa;
+  height: 3rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.scndbtn {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.inputcontaier .input button:active {
+  background-color: #93b9ff;
+}
+
+.popup {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: -5px;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  font-family: sans-serif;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.popup .popuptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  -webkit-animation: fadeIn 1s;
+  border-color: red transparent transparent transparent;
+  animation: fadeIn 1s;
+}
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.div {
+  padding: 8px 15px;
+  width: 35rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 20px;
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.fa-sort-alpha-down-alt::before {
+  content: '\f881';
+}
+
+.fa-sort-alpha-down::before {
+  content: '\f15d';
+}
+
+.fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
