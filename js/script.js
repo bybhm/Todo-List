@@ -13,7 +13,7 @@ const addTodo = () => {
     showPopup('Your todo list is full');
   } else {
     todoArray.push(todoInput);
-    createTodoElement(todoInput, todoArray.length - 1); // Pass the index
+    createTodoElement(todoInput, todoArray.length - 1); 
     console.log(todoArray.length);
   }
 
@@ -60,7 +60,7 @@ const createTodoElement = (todo, index) => {
   document.querySelector('.inputcontainer').insertAdjacentHTML('beforeend', todoHTML);
 };
 
-// HTML button click handlers
+
 document.querySelector('#addTodoButton').addEventListener('click', addTodo);
 document.querySelector('#clearTodosButton').addEventListener('click', clearTodos);
 document.querySelector('#sortTodosButton').addEventListener('click', sortTodos);
