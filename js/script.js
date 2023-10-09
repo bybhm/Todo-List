@@ -64,7 +64,7 @@ const todoremove = (index) => {
 };
 const todosorter = () => {
   todoarray.sort((a, b) => {
-    return a - b;
+    return a - b ||a.ocalecompare(b);
   });
   console.log(todoarray);
   for (let key of document.querySelectorAll('.div')) {
