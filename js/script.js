@@ -1,88 +1,65 @@
-class TodoApp {
-  constructor() {
-    this.todoInput = document.querySelector('#todoinput');
-    this.inputContainer = document.querySelector('.inputcontainer');
-    this.todoArray = [];
-    this.initEventListeners();
+let todoInput;
+let todoArray = [];
+
+const addTodo = () => {
+  todoInput = document.querySelector('#todoinput').value.trim();
+  const inputContainer = document.querySelector('.inputcontainer');
+
+  if (todoInput === '') {
+    showPopup('This field is empty');
+  } else if (todoArray.includes(todoInput)) {
+    showPopup('This todo is already in your list');
+  } else if (todoArray.length >= 8) {
+    showPopup('Your todo list is full');
+  } else {
+    todoArray.push(todoInput);
+    createTodoElement(todoInput, todoArray.length - 1); 
+    console.log(todoArray.length);
   }
 
-  initEventListeners() {
-    document.querySelector('#addTodoButton').addEventListener('click', () => this.addTodo());
-    document.querySelector('#clearTodosButton').addEventListener('click', () => this.clearTodos());
-    document.querySelector('#sortTodosButton').addEventListener('click', () => this.sortTodos());
-  }
+  document.querySelector('#todoinput').value = '';
+};
 
-  addTodo() {
-    const todoText = this.todoInput.value.trim();
+const clearTodos = () => {
+  todoArray = [];
+  const todos = document.querySelectorAll('.todo');
+  todos.forEach(todo => todo.remove());
+};
 
-    if (todoText === '') {
-      this.showPopup('This field is empty');
-    } else if (this.todoArray.includes(todoText)) {
-      this.showPopup('This todo is already in your list');
-    } else if (this.todoArray.length >= 8) {
-      this.showPopup('Your todo list is full');
-    } else {
-      this.todoArray.push(todoText);
-      this.createTodoElement(todoText);
-      console.log(this.todoArray.length);
-    }
-
-    this.todoInput.value = '';
-  }
-
-  clearTodos() {
-    this.todoArray = [];
-    this.clearTodoElements();
-  }
-
-  removeTodo(index) {
-    if (index >= 0 && index < this.todoArray.length) {
-      this.todoArray.splice(index, 1);
-      this.clearTodoElements();
-      this.todoArray.forEach((todo, index) => {
-        this.createTodoElement(todo, index);
-      });
+const removeTodo = (index) => {
+  if (index >= 0 && index < todoArray.length) {
+    todoArray.splice(index, 1);
+    const todoElement = document.querySelector(`#todo-${index}`);
+    if (todoElement) {
+      todoElement.remove();
     }
   }
+};
 
-  sortTodos() {
-    this.todoArray.sort((a, b) => {
-      if (typeof a === 'number' && typeof b === 'number') {
-        return a - b; // Numerical sorting
-      } else if (typeof a === 'string' && typeof b === 'string') {
-        return a.localeCompare(b); // Alphabetical sorting
-      } else if (typeof a === 'number') {
-        return -1; // Numbers come before strings
-      } else {
-        return 1; // Strings come after numbers
-      }
-    });
+const sortTodos = () => {
+  todoArray.sort();
+  const inputContainer = document.querySelector('.inputcontainer');
+  clearTodos();
+  todoArray.forEach((todo, index) => {
+    createTodoElement(todo, index);
+  });
+};
 
-    this.clearTodoElements();
-    this.todoArray.forEach((todo, index) => {
-      this.createTodoElement(todo, index);
-    });
-  }
+const showPopup = (message) => {
+  const popupHTML = `<div class="popup">
+                        <span class="popuptext show">${message}</span>
+                    </div>`;
+  document.querySelector('.inputcontainer').insertAdjacentHTML('beforeend', popupHTML);
+  setTimeout(() => {
+    document.querySelector('.popup').remove();
+  }, 1000);
+};
 
-  showPopup(message) {
-    const popupHTML = `<div class="popup">
-                          <span class="popuptext show">${message}</span>
-                        </div>`;
-    this.inputContainer.insertAdjacentHTML('beforeend', popupHTML);
-    setTimeout(() => {
-      document.querySelector('.popup').remove();
-    }, 1000);
-  }
+const createTodoElement = (todo, index) => {
+  const todoHTML = `<div class='todo' id='todo-${index}' onclick='removeTodo(${index})'>${todo}</div>`;
+  document.querySelector('.inputcontainer').insertAdjacentHTML('beforeend', todoHTML);
+};
 
-  createTodoElement(todoText) {
-    const todoHTML = `<div class='todo' onclick='app.removeTodo(${this.todoArray.length - 1})'>${todoText}</div>`;
-    this.inputContainer.insertAdjacentHTML('beforeend', todoHTML);
-  }
-
-  clearTodoElements() {
-    const todos = document.querySelectorAll('.todo');
-    todos.forEach(todo => todo.remove());
-  }
-}
-
-const app = new TodoApp();
+document.querySelector('#addTodoButton').addEventListener('click', addTodo);
+document.querySelector('#clearTodosButton').addEventListener('click', clearTodos);
+document.querySelector('#sortTodosButton').addEventListener('click', sortTodos);
