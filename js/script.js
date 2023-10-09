@@ -46,7 +46,18 @@ class TodoApp {
   }
 
   sortTodos() {
-    this.todoArray.sort();
+    this.todoArray.sort((a, b) => {
+      if (typeof a === 'number' && typeof b === 'number') {
+        return a - b; // Numerical sorting
+      } else if (typeof a === 'string' && typeof b === 'string') {
+        return a.localeCompare(b); // Alphabetical sorting
+      } else if (typeof a === 'number') {
+        return -1; // Numbers come before strings
+      } else {
+        return 1; // Strings come after numbers
+      }
+    });
+
     this.clearTodoElements();
     this.todoArray.forEach((todo, index) => {
       this.createTodoElement(todo, index);
