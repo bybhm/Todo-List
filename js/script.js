@@ -77,5 +77,4 @@ const todosorter = () => {
   document.querySelector('.inputcontaier').innerHTML += html;
 };
 
-// TODO   :  this code for localstorage
-// TODO   :  this coade add enter keypress run
+
