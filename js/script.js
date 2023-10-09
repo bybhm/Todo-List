@@ -9,7 +9,7 @@ const addTodo = () => {
     showPopup("This field is empty");
   } else if (todoArray.includes(todoInput)) {
     showPopup("This todo is already in your list");
-  } else if (todoArray.length >= 8) {
+  } else if (todoArray.length >= 6) {
     showPopup("Your todo list is full");
   } else {
     todoArray.push(todoInput);
