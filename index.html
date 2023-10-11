@@ -1,59 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Document title -->
     <title>TodoList</title>
-    <link
-      rel="stylesheet"
-      href="./css/reset.css" />
-    <link
-      rel="stylesheet"
-      href="./css/style.css" />
-     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link
-      rel="shortcut icon"
-      href="./assets/_48cd7cb1-71d2-454c-a5a0-715b4cb45816.jpg"
-      type="image/x-icon" />
+    <!-- Css links -->
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link type="image/x-icon" href="./assets/_48cd7cb1-71d2-454c-a5a0-715b4cb45816.jpg" rel="shortcut icon">
   </head>
+
   <body>
+    <!-- Global container section -->
     <div class="global">
+      <!-- Header conatiner section -->
       <header>
+        <!-- Cover container section -->
         <div class="cover">
-          <h2
-            class="covertitle"
-            onclick="clearlocal()">
-            ToDoList
+          <!-- Title header on cover container section  -->
+          <h2 class="covertitle" id="cleartodo">
+            TodoList
           </h2>
         </div>
-        <div class="inputcontaier">
+        <!-- Input container section -->
+        <div class="inputcontainer">
+          <!-- Todo input container and todos container section -->
           <div class="input">
-            <input
-              autofocus
-              type="text"
-              placeholder="Enter your todo!"
-              id="todoinput"
-              name="todoinput" />
-            <button onclick="todoadder()">
+            <!-- Todo input section  -->
+            <input id="todoinput" name="todoinput" type="text" placeholder="Enter your todo!" autocomplete="off" autofocus>
+            <!-- Todo Add button section -->
+            <button id="addtodo" title="Submit">
               <i class="fa-solid fa-plus"></i>
             </button>
-            <button
-              class="scndbtn"
-              onclick="todosorter()">
+            <!-- Todo Sort button -->
+            <button class="scndbtn" id="sorttodo" type="submit" title="sort">
               <h4>
-              <i class="fa-solid fa-filter"></i>
+                <i class="fa-solid fa-filter"></i>
               </h4>
             </button>
           </div>
         </div>
       </header>
     </div>
+    <!-- Script add from js file -->
     <script src="./js/script.js"></script>
   </body>
 </html>
-
-

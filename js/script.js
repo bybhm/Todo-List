@@ -1,80 +1,86 @@
-let todoinputer;
-let htmlelement;
-let todoarray = [];
+let todoInput;
+let todoArray = [];
 
-const todoadder = () => {
-  todoinputer = document.querySelector('#todoinput').value;
-  if (todoinputer.trim() == '' || todoinputer.trim() == null) {
-    let html = `<div class="popup">
-                        <span class="popuptext show" id="myPopup"> 
-                        This field is empty 
-                        </span>
-                    </div>`;
-    document.querySelector('.inputcontaier').innerHTML += html;
-    setTimeout(() => {
-      document.querySelector('.popup').remove();
-    }, 1000);
-  } else if (todoarray.includes(todoinputer.trim())) {
-    let html = `<div class="popup">
-                        <span class="popuptext show" id="myPopup"> 
-                        This todo is inclue your todo
-                        </span>
-                    </div>`;
-    document.querySelector('.inputcontaier').innerHTML += html;
-    setTimeout(() => {
-      document.querySelector('.popup').remove();
-    }, 1000);
-  } else if (todoarray.length == 8) {
-    let html = `<div class="popup">
-                        <span class="popuptext show" id="myPopup"> 
-              Your todos full
-                        </span>
-                    </div>`;
-    document.querySelector('.inputcontaier').innerHTML += html;
-    setTimeout(() => {
-      document.querySelector('.popup').remove();
-    }, 1000);
+const addTodo = () => {
+  todoInput = document.querySelector('#todoinput').value.trim();
+
+  if (todoInput === '') {
+    showPopup('This field is empty');
+  } else if (todoArray.includes(todoInput)) {
+    showPopup('This todo is already in your list');
+  } else if (todoArray.length >= 6) {
+    showPopup('Your todo list is full');
   } else {
-    todoarray.push(todoinputer.trim());
-    let html = ``;
-    todoarray.forEach((e, i) => {
-      html +=
-        e == todoinputer
-          ? `<div class='div' onclick='todoremove(${i})'>${e}</div>`
-          : '';
-    });
-    document.querySelector('.inputcontaier').innerHTML += html;
-    console.log(todoarray.length);
+    todoArray.push(todoInput);
+    createTodoElement(todoInput, todoArray.length - 1);
+  }
+
+  document.querySelector('#todoinput').value = '';
+};
+
+const clearTodos = () => {
+  todoArray = [];
+  clearTodoEleents();
+};
+
+const clearTodoEleents = () => {
+  const todos = document.querySelectorAll('.todo');
+  todos.forEach((todo) => todo.remove());
+};
+
+const removeTodo = (index) => {
+  if (index >= 0 && index < todoArray.length) {
+    todoArray.splice(index, 1);
+    const todoElement = document.querySelector(`#todo-${index}`);
+    if (todoElement) {
+      todoElement.remove();
+    }
   }
 };
 
-const clearlocal = () => {
-  todoarray = [];
+const sortTodos = () => {
+  todoArray.sort((a, b) => {
+    return a - b || a.localeCompare(b);
+  });
+  clearTodoEleents();
+  todoArray.forEach((todo, index) => {
+    createTodoElement(todo, index);
+  });
+};
 
-  for (let key of document.querySelectorAll('.div')) {
-    key.remove();
+const sortTodosElements = () => {
+  if (todoArray.length == 0) {
+    showPopup('This field is empty');
+  } else {
+    sortTodos();
   }
 };
-const todoremove = (index) => {
-  let myupdated = todoarray.filter((e) => {
-    return e != index;
-  });
-  document.querySelectorAll('.div')[index].remove();
-  todoarray = myupdated;
-};
-const todosorter = () => {
-  todoarray.sort((a, b) => {
-    return a - b ||a.ocalecompare(b);
-  });
-  console.log(todoarray);
-  for (let key of document.querySelectorAll('.div')) {
-    key.remove();
-  }
-  let html = ``;
-  todoarray.forEach((e, i) => {
-    html += `<div class='div' onclick='todoremove(${i})'>${e}</div>`;
-  });
-  document.querySelector('.inputcontaier').innerHTML += html;
+
+const showPopup = (message) => {
+  const popupHTML = `<div class="popup">
+                        <span class="popuptext show">${message}</span>
+                    </div>`;
+  document
+    .querySelector('.inputcontainer')
+    .insertAdjacentHTML('beforeend', popupHTML);
+  setTimeout(() => {
+    document.querySelector('.popup').remove();
+  }, 3000);
 };
 
+const createTodoElement = (todo, index) => {
+  const todoHTML = `<div class='todo' id='todo-${index}' onclick='removeTodo(${index})'> <span class='index'>${++index}.</span>  ${todo}</div>`;
+  document
+    .querySelector('.inputcontainer')
+    .insertAdjacentHTML('beforeend', todoHTML);
+};
 
+document.querySelector('#addtodo').addEventListener('click', addTodo);
+document.querySelector('.input').addEventListener('keypress', (e) => {
+  e.key == 'Enter' && addTodo();
+});
+document.querySelector('#cleartodo').addEventListener('click', clearTodos);
+document
+  .querySelector('#sorttodo')
+  .addEventListener('click', sortTodosElements);
+//todo: remove end element fix problem
