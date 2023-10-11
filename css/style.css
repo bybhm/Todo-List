@@ -1,4 +1,5 @@
 /* Reset Style Begin */
+/* Reset CSS styles to ensure consistent default styles across browsers */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,79 +8,31 @@
   outline: 0;
 }
 
-html,
-body,
-div,
-span,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-pre,
-a,
-code,
-img,
-sub,
-sup,
-b,
-u,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figure,
-figcaption,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
+/* Apply default styles to a variety of HTML elements */
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, code, img, sub, sup, b, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, footer, header, main, menu, nav, section, summary {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
 }
 
-ol,
-ul {
+/* Remove list styles from ordered and unordered lists */
+ol, ul {
   list-style: none;
 }
 
+/* Remove underlines from links */
 a {
   text-decoration: none;
 }
 
+/* Set table styles */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 /* Reset Styles End */
 
+/* Apply styles to the 'global' container */
 .global {
   height: 100vh;
   width: 100vw;
@@ -97,24 +50,25 @@ table {
   animation: gradient 20s ease infinite;
 }
 
+/* Keyframes animation for the background gradient */
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
-
   100% {
     background-position: 0% 50%;
   }
 }
 
+/* Apply styles to the 'header' section */
 header {
   position: relative;
 }
 
+/* Apply styles to the 'cover' section */
 .cover {
   height: 30vh;
   width: 100vw;
@@ -126,6 +80,7 @@ header {
   background-position: center;
 }
 
+/* Styles for the page title */
 .covertitle {
   text-shadow: 0px 2.5px 15px #fff;
   color: #fff;
@@ -135,14 +90,15 @@ header {
   align-self: center;
 }
 
+/* Hover and active styles for the page title */
 .covertitle:hover {
   text-shadow: 0px 2.5px 7.5px white;
 }
-
 .covertitle:active {
   text-shadow: 0px 2.5px 5px white;
 }
 
+/* Apply styles to the 'inputcontainer' section */
 .inputcontainer {
   position: relative;
   top: -40px;
@@ -154,11 +110,13 @@ header {
   gap: 10px 0;
 }
 
+/* Apply styles to the input form */
 .inputcontainer .input {
   display: flex;
   justify-content: center;
 }
 
+/* Styles for the input field */
 .inputcontainer .input input {
   padding: 5px 10px;
   width: 35rem;
@@ -174,12 +132,14 @@ header {
   font-size: 20px;
 }
 
+/* Placeholder styles for the input field */
 .inputcontainer .input input::-webkit-input-placeholder {
   color: gray;
   font-weight: 600;
   align-items: center;
 }
 
+/* Styles for the 'Add' button */
 .inputcontainer .input button {
   padding: 0 25px;
   background-color: #ecf1fa;
@@ -192,15 +152,18 @@ header {
   align-items: center;
 }
 
+/* Active styles for the 'Add' button */
 .inputcontainer .input button:active {
   background-color: #93b9ff;
 }
 
+/* Styles for the secondary button */
 .scndbtn {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
+/* Styles for the popup message */
 .popup {
   position: absolute;
   display: inline-block;
@@ -218,6 +181,7 @@ header {
   transform: translate(-50%, 0);
 }
 
+/* Styles for the popup message text */
 .popup .popuptext {
   visibility: hidden;
   width: 160px;
@@ -238,6 +202,7 @@ header {
   border-radius: 6px;
 }
 
+/* Styles for the popup message arrow */
 .popup .popuptext::after {
   content: '';
   position: absolute;
@@ -251,12 +216,14 @@ header {
   animation: fadeIn 1s;
 }
 
+/* Styles for the visible popup message */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
 
+/* Styles for to-do items */
 .todo {
   padding: 8px 15px;
   width: 35rem;
@@ -273,22 +240,22 @@ header {
   -ms-border-radius: 5px;
   border-radius: 5px;
 }
+
+/* Styles for the index of to-do items */
 .index {
   color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
   font-size: 22px;
   font-family: serif;
-  margin-right: 10px;
+  margin right: 10px;
 }
 
-/* Animations section */
+/* Keyframes animation for fading in elements */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
 }
-/* todo: add responsive */
