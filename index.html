@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoList</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="cover">
-          <h1 class="covertitle" id="cleartodo">TodoList</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TodoList</title>
+  <!-- Link to the external CSS file for styling -->
+  <link href="./css/style.css" rel="stylesheet">
+  <!-- Link to the Font Awesome icon library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <!-- Set the favicon for the page -->
+  <link type="image/x-icon" href="./assets/_48cd7cb1-71d2-454c-a5a0-715b4cb45816.jpg" rel="shortcut icon">
+</head>
+<body>
+  <div class="global">
+    <header>
+      <div class="cover">
+        <!-- Page title -->
+        <h2 class="covertitle" id="cleartodo">TodoList</h2>
+      </div>
+      <div class="inputcontainer">
+        <div class="input">
+          <!-- Input field for adding to-do items -->
+          <input id="todoinput" name="todoinput" type="text" placeholder="Enter your todo!" autocomplete="off" autofocus>
+          <!-- Button to submit to-do items -->
+          <button id="addtodo" title="Submit">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <!-- Button for sorting to-do items -->
+          <button class="scndbtn" id="sorttodo" type="submit" title="sort">
+            <h4><i class="fa-solid fa-filter"></i></h4>
+          </button>
         </div>
-        <div class="inputcontainer">
-          <div class="input">
-            <input id="todoinput" name="todoinput" type="text" placeholder="Enter your todo!" autocomplete="off" autofocus>
-            <button id="addtodo" title="Submit">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-            <button class="scndbtn" id="sorttodo" type="submit" title="Sort">
-              <i class="fa-solid fa-filter"></i>
-            </button>
-          </div>
-        </div>
-      </header>
-    </div>
-    <script src="script.js"></script>
-  </body>
+      </div>
+    </header>
+  </div>
+  <!-- Include an external JavaScript file for interactivity -->
+  <script src="./js/script.js"></script>
+</body>
 </html>
